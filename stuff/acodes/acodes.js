@@ -126,7 +126,7 @@ function aCodesToHTML(input) {
 			for(var j = 0; j < aCodes.length; j++) {
 				var aCode = aCodes[j];
 				if(input[i+1].toLowerCase() == aCode.code) {
-					
+
 					foundCode = true;
 					if(aCode.type === "colour") {
 						closeSpans();
@@ -157,15 +157,22 @@ function aCodesToHTML(input) {
 }
 
 
-// This file is also used in http://kronosville.net/staff
-if (location.pathname.substring(1, 13) === "stuff/acodes") {
+/* Check if "/stuff/acodes" is within the path.
+This file is also used in http://kronosville.net/staff
+It doesn't just check if the first bit IS /stuff/acodes
+so that it can be tested without it being on the site. */
+
+if (location.pathname.indexOf("/stuff/acodes") !== -1) {
 
 	function el(id) {
 		return document.getElementById("acodes-" + id);
 	}
 
 	el("btn").onclick = function() {
-		el("output").value = aCodesToHTML(el("input").value);
+		var result = aCodesToHTML(el("input").value);
+		el("output").value = result;
+		el("preview").innerHTML = 'Preview: <span style="font-family:monospace;">'
+			+ result + '</span>';
 	};
 
 }
