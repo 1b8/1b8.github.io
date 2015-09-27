@@ -124,17 +124,20 @@ function aCodesToHTML(input) {
 		if(input[i] === "&") {
 			var foundCode = false;
 			for(var j = 0; j < aCodes.length; j++) {
-				if(input[i+1].toLowerCase() == aCodes[j].code) {
+				var aCode = aCodes[j];
+				if(input[i+1].toLowerCase() == aCode.code) {
+					
 					foundCode = true;
-					if(aCodes[j].type === "colour") {
+					if(aCode.type === "colour") {
 						closeSpans();
-						if (aCodes[j].code !== "r") {
-							output += '<span style="color:' + aCodes[j].colour + ';">';
+						if (aCode.code !== "r") {
+							output += '<span style="color:' + aCode.colour + ';">';
+							spansOpen++;
 						}
 					} else {
-						output += '<span style="' + aCodes[j].css + '">';
+						output += '<span style="' + aCode.css + '">';
+						spansOpen++;
 					}
-					spansOpen++;
 					i++; // Skip to the next char
 					break;
 				}
