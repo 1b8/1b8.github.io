@@ -100,7 +100,7 @@ var aCodes = [
 	},
 	{
 		code: "r",
-		css: ""
+		type: "colour"
 	}
 ];
 
@@ -128,7 +128,9 @@ function aCodesToHTML(input) {
 					foundCode = true;
 					if(aCodes[j].type === "colour") {
 						closeSpans();
-						output += '<span style="color:' + aCodes[j].colour + ';">';
+						if (aCodes[j].code !== "r") {
+							output += '<span style="color:' + aCodes[j].colour + ';">';
+						}
 					} else {
 						output += '<span style="' + aCodes[j].css + '">';
 					}
@@ -152,7 +154,7 @@ function aCodesToHTML(input) {
 }
 
 
-// This file is also used in http://1b8.github.io/kv/staff.html
+// This file is also used in http://kronosville.net/staff
 if (location.pathname.substring(1, 13) === "stuff/acodes") {
 
 	function el(id) {
