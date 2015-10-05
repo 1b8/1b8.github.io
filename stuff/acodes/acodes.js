@@ -9,7 +9,7 @@ function decor(val) {
 }
 
 function aCodesToHTML (input, startCode) {
-
+  if (typeof startCode === 'undefined') startCode = '&';
   var spansOpen = 0;
 
   function closeSpans() {
@@ -79,7 +79,7 @@ if (window.location.pathname.indexOf('/stuff/acodes') !== -1) {
   }
 
   el('btn').onclick = function() {
-    var result = aCodesToHTML(el('input').value, '&');
+    var result = aCodesToHTML(el('input').value);
     el('output').value = result;
     el('preview').innerHTML = 'Preview: <span style="font-family:monospace;">'
     + result + '</span>';
