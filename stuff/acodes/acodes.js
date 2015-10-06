@@ -1,5 +1,7 @@
 // Minecraft Bukkit Essentials & codes, JavaScript
 
+// NOTE After editing, remember to minify with jscompress.com
+
 function hex(val) {
   return 'color:#' + val;
 }
@@ -65,24 +67,4 @@ function aCodesToHTML (input, startCode) {
     return result;
 
   }) + closeSpans(); // Close spans at the end
-}
-
-/* Check if "/stuff/acodes" is within the path.
-This file is also used in http://kronosville.net/staff
-It doesn't just check if the first bit IS /stuff/acodes
-so that it can be tested without it being on the site. */
-
-if (window.location.pathname.indexOf('/stuff/acodes') !== -1) {
-
-  function el(id) {
-    return document.getElementById('acodes-' + id);
-  }
-
-  el('btn').onclick = function() {
-    var result = aCodesToHTML(el('input').value);
-    el('output').value = result;
-    el('preview').innerHTML = 'Preview: <span style="font-family:monospace;">'
-    + result + '</span>';
-  };
-
 }

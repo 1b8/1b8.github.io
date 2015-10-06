@@ -11,6 +11,29 @@
   <button id="acodes-btn">Button!</button><br>
   <textarea rows="10" cols="50" id="acodes-output" readonly></textarea>
   <p id="acodes-preview"></p>
-  <script src="acodes.js"></script>
+
+  <p>
+    You can use the API to translate input. Just load the JavaScript file
+    "http://1b8.github.io/stuff/acodes/acodes.js" and use the JavaScript
+    function <code>aCodesToHTML(input)</code>, like so:
+    {% highlight html %}
+      <p id="translated-stuff"></p>
+      <script src="http://1b8.github.io/stuff/acodes/acodes.js"></script>
+      <script>
+        document.getElementById("translated-stuff").innerHTML = aCodesToHTML("&6&nHello!")
+      </script>
+    {% endhighlight %}
+    You can also specify a "<code>startCode</code>" other than "&amp;", like so:
+    {% highlight javascript %}
+      aCodesToHTML("?6?nHello!", "?")
+    {% endhighlight %}
+    would do exactly the same thing as
+    {% highlight javascript %}
+      aCodesToHTML("&6&nHello!")
+    {% endhighlight %}
+  </p>
+
+  <script src="acodes.min.js"></script>
+  <script src="acodes-site.js"></script>
 </body>
 </html>
