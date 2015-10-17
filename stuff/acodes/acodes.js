@@ -23,11 +23,7 @@ function aCodesToHTML (input, startCode) {
     return result;
   }
 
-  function aCodeRegExp(val) {
-    return new RegExp(startCode + val, 'gi');
-  }
-
-  return input.replace(aCodeRegExp('([\\da-fk-or])'), function (full, code) {
+  return input.replace(new RegExp('&([\\da-fk-or])', 'gi'), function (full, code) {
 
     var willCloseSpans = true, lower = code.toLowerCase(), css, result = '';
 
